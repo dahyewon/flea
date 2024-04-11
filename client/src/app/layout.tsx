@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import StyledComponentsRegistry from '@/styles/registry';
 import Providers from './providers'
 
 
