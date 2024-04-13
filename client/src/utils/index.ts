@@ -1,19 +1,16 @@
-// react query 쓸거라 변경 필요
+import Error from 'ts-error';
 
-export const fetcher = async (
+export const fetcher = async <T>(
   resource: RequestInfo,
   init?: RequestInit,
-): Promise<any> => {
-  const res = await fetch(resource, init);
+): Promise<T> => {
+  const response = await fetch(resource, init);
 
-  if (!res.ok) {
-    const errorRes = await res.json()
-    const error = new Error(
-      errorRes.message ?? 'API 요청 중에 에러가 발생했습니다',
-    )
-
-    throw error
+  if (!response.ok) {
+    const errorResponse = await response.json();
+    const errorMessage = errorResponse.message || 'API 요청 중에 에러가 발생했습니다.';
+    throw new Error(errorMessage);
   }
 
-  return res.json()
-}
+  return response.json() as T;
+};

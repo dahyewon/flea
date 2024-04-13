@@ -1,24 +1,28 @@
 import { theme } from '@/themes'
 import type { ResponsiveProp, Responsive } from '@/types/styles'
 
+// Theme의 타입
 export type AppTheme = typeof theme
+
 type SpaceThemeKeys = keyof typeof theme.space
 type ColorThemeKeys = keyof typeof theme.colors
 type FontSizeThemeKeys = keyof typeof theme.fontSizes
 type LetterSpacingThemeKeys = keyof typeof theme.letterSpacings
 type LineHeightThemeKeys = keyof typeof theme.lineHeights
 
-export type Space = SpaceThemeKeys | (string & {}) // 임의의 문자열 표현
+// 각 Theme의 키의 타입
+export type Space = SpaceThemeKeys | (string & {})
 export type Color = ColorThemeKeys | (string & {})
 export type FontSize = FontSizeThemeKeys | (string & {})
 export type LetterSpacing = LetterSpacingThemeKeys | (string & {})
 export type LineHeight = LineHeightThemeKeys | (string & {})
 
-const BREAKPOINTS: { [key:string]:string } = {
-  sm: '640px',
-  md: '768px',
-  lg: '1024px',
-  xl: '1280px',
+// 브레이크 포인트
+const BREAKPOINTS: { [key: string]: string } = {
+  sm: '640px', // 640px 이상
+  md: '768px', // 768px 이상
+  lg: '1024px', // 1024px 이상
+  xl: '1280px', // 1280px 이상
 }
 
 export function toPropValue<T>(
@@ -44,6 +48,7 @@ export function toPropValue<T>(
         responsiveKey === 'lg' ||
         responsiveKey === 'xl'
       ) {
+        // 미디어 쿼리의 스타일
         const breakpoint = BREAKPOINTS[responsiveKey]
         const style = `${propKey}: ${toThemeValueIfNeeded(
           propKey,
