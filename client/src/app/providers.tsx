@@ -6,11 +6,11 @@ import { theme } from '@/themes/index';
 
 const Providers = (props: React.PropsWithChildren) => {
   return (
-    <StyledComponentsRegistry>
-      <ThemeProvider theme={theme}>
-        {props.children} 
-      </ThemeProvider>
-    </StyledComponentsRegistry>
+    // <StyledComponentsRegistry>
+    //   <ThemeProvider theme={theme}>
+        props.children
+    //   </ThemeProvider>
+    // </StyledComponentsRegistry>
   );
 };
 

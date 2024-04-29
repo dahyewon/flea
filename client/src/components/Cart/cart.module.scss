@@ -1,0 +1,8 @@
+.icon {
+  color: var(--black);
+  cursor: pointer;
+  &:hover {
+    color: var(--primaryDark);
+  }
+  font-size: var(--font-l);
+}
